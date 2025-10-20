@@ -1,7 +1,26 @@
-<ion-split-pane when="xs" contentId="main">
-  <ion-menu  contentId="main">
-      <ion-toolbar class="ion-text-center">
-        <ion-label>Market</ion-label>
-      </ion-toolbar>
-   
-  </ion-menu>
+<ion-header style="background-color: white; color: black; height: 100vh">
+  <ion-toolbar
+    style="
+      text-align: center;
+      border-bottom: 1px solid black;
+      --color: black;
+      --background: white;
+    "
+  >
+    <ion-label>Market</ion-label>
+  </ion-toolbar>
+  <ion-item
+    *ngFor="let item of menuItems"
+    lines="none"
+    style="
+      --background: white;
+      --color: black;
+      text-align: center;
+      font-size: small;
+      --background-hover: green;
+      cursor: pointer;
+    "
+  >
+    <ion-label>{{ item.label }}</ion-label>
+  </ion-item>
+</ion-header>

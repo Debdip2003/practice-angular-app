@@ -1,3 +1,13 @@
-<ion-content [fullscreen]="true">
-  <app-sidebar></app-sidebar>
-</ion-content>
+<ion-app>
+  <ion-split-pane when="xs" contentId="main-content">
+    <!-- Sidebar -->
+    <ion-menu side="start"  contentId="main-content" style="width: 10px;">
+      <app-sidebar></app-sidebar>
+    </ion-menu>
+
+    <!-- Main Content -->
+    <ion-content id="main-content">
+      <app-main-content></app-main-content>
+    </ion-content>
+  </ion-split-pane>
+</ion-app>

@@ -1,17 +1,29 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { IonSplitPane, IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonList, IonButtons, IonMenuButton, IonLabel } from "@ionic/angular/standalone";
-
+import {
+  IonHeader,
+  IonToolbar,
+  IonItem,
+  IonLabel,
+  IonMenu,
+  IonItemDivider,
+} from '@ionic/angular/standalone';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
-  imports: [IonLabel,  IonContent, IonTitle, IonToolbar, IonSplitPane, IonMenu, IonList, IonItem],
+  standalone: true,
+  imports: [CommonModule, IonToolbar, IonHeader, IonLabel, IonItem],
 })
 export class SidebarComponent implements OnInit {
+  hoveredItem: string = '';
+  menuItems = [
+    { label: 'Dashboard' },
+    { label: 'Profile' },
+    { label: 'Settings' },
+    { label: 'Logout' },
+  ];
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

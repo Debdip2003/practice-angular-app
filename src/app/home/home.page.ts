@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
-import { SidebarComponent } from "../sidebar/sidebar.component";
+
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { IonSplitPane, IonContent, IonApp, IonMenu } from '@ionic/angular/standalone';
+import { MainContentComponent } from '../main-content/main-content.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, SidebarComponent],
+  imports: [IonApp, IonSplitPane, SidebarComponent, MainContentComponent, IonContent, IonMenu],
 })
 export class HomePage {
   constructor() {}

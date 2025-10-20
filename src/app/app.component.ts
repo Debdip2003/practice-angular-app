@@ -4,7 +4,7 @@ import { IonApp, IonRouterOutlet, IonItemDivider, IonLabel, IonContent } from '@
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonContent, IonLabel, IonItemDivider, IonApp, IonRouterOutlet],
+  imports: [ IonApp, IonRouterOutlet],
 })
 export class AppComponent {
   constructor() {}
