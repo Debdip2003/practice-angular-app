@@ -1,23 +1,56 @@
 .data-table {
   width: 100%;
+  border-collapse: collapse;
 }
-.data-table thead {
-  margin-bottom: 10px;
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
 }
-.data-table thead th {
-  font-weight: bold;
+
+.data-table th {
   text-align: left;
 }
-.data-table tbody td {
-  padding: 12px 16px;
-  font-size: 15px;
+.stock-info-container {
+  display: flex;
+  align-items: center;
 }
-.data-table .stock-info {
+.stockImg {
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+}
+.stock-text-group {
   display: flex;
   flex-direction: column;
 }
-.data-table .sub-label {
-  margin: 0;
-  font-size: 12px;
-  color: #999;
+.sub-label{
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 60%;
+}
+
+.data-table .col-ltp,
+.data-table .col-chg,
+.data-table .col-chg-perc {
+  width: 10%;
+  text-align: right;
+}
+
+.data-table tbody .col-ltp,
+.data-table tbody .col-chg,
+.data-table tbody .col-chg-perc {
+  text-align: left;
+}
+
+.data-table .change-up {
+  color: #2dd36f;
+}
+.data-table .change-down {
+  color: #eb445a;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
 }

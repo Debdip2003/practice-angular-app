@@ -1,40 +1,38 @@
 <ion-content>
   <ion-card>
-    <table class="data-table">
-      <thead>
-        <tr>
-          <th>Stock Name</th>
-          <th>LTP</th>
-          <th>Chg</th>
-          <th>Chg%</th>
-        </tr>
-      </thead>
+    <div class="table-scroll-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Stock Name</th>
+            <th>LTP</th>
+            <th>Chg</th>
+            <th>Chg%</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td>
-            <div class="stock-info">
-              <ion-label>Tata Investment Corporation Ltd.</ion-label>
-              <p class="sub-label">Finance</p>
-            </div>
-          </td>
-          <td>875.00</td>
-          <td color="primary">+70.00</td>
-          <td color="danger">+8.7%</td>
-        </tr>
+        <tbody>
+          <tr *ngFor="let stocks of stockNames">
+            <td >
+              <div class="stock-info-container">
+                <img
+                  [src]="stocks.SecurityLogoUrl"
+                  [alt]="stocks.Name"
+                  class="stockImg"
+                />
 
-        <tr>
-          <td>
-            <div class="stock-info">
-              <ion-label>Ather Energy Ltd.</ion-label>
-              <p class="sub-label">Automobile & Ancillaries</p>
-            </div>
-          </td>
-          <td>765.85</td>
-          <td color="primary">+43.65</td>
-          <td color="danger">+6.0%</td>
-        </tr>
-      </tbody>
-    </table>
+                <div class="stock-text-group">
+                  <span class="main-label">{{ stocks.Name }}</span>
+                  <span class="sub-label">{{ stocks.Sector }}</span>
+                </div>
+              </div>
+            </td>
+            <td class="col-ltp">{{ stocks.C }}</td>
+            <td class="col-chg change-up">{{ stocks.CZ }}</td>
+            <td class="col-chg-perc change-down">{{ stocks.CZG }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ion-card>
 </ion-content>
