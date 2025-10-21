@@ -1,0 +1,19 @@
+ion-header {
+  background-color: white;
+  color: black;
+  height: 100vh;
+}
+ion-toolbar {
+  text-align: center;
+  border-bottom: 1px solid black;
+  --color: black;
+  --background: white;
+}
+ion-item {
+  --background: white;
+  --color: black;
+  text-align: center;
+  font-size: small;
+  --background-hover: green;
+  cursor: pointer;
+}

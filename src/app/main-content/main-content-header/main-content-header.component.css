@@ -1,0 +1,15 @@
+ion-toolbar {
+  --background: #f5f5f5;
+}
+ion-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bolder;
+}
+.trending-segment {
+min-height: auto;
+}
+ion-segment-button {
+  text-transform: none;
+  height: 1px;
+}

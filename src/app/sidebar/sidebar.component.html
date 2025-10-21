@@ -1,26 +1,10 @@
-<ion-header style="background-color: white; color: black; height: 100vh">
-  <ion-toolbar
-    style="
-      text-align: center;
-      border-bottom: 1px solid black;
-      --color: black;
-      --background: white;
-    "
-  >
+<ion-header>
+  <ion-toolbar>
     <ion-label>Market</ion-label>
   </ion-toolbar>
-  <ion-item
-    *ngFor="let item of menuItems"
-    lines="none"
-    style="
-      --background: white;
-      --color: black;
-      text-align: center;
-      font-size: small;
-      --background-hover: green;
-      cursor: pointer;
-    "
-  >
-    <ion-label>{{ item.label }}</ion-label>
-  </ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of menuItems" button lines="none">
+      <ion-label>{{ item.label }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-header>

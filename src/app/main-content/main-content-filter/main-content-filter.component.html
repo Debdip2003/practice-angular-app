@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <span slot="start">Tue, 21 Oct 2025</span>
+
+    <div slot="end" class="segment-and-icon-wrapper">
+      <ion-segment
+        value="all"
+        class="small-segment"
+        scrollable="true"
+        color="dark"
+      >
+        <ion-segment-button value="all">
+          <ion-label>Gainer</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="favorites">
+          <ion-label>Loser</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" color="primary">
+          <ion-icon slot="icon-only" name="arrow-down"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" color="primary" shape="">
+          <ion-icon slot="icon-only" name="filter-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+  <ion-chip color="primary" size="small">
+    <ion-label>Major Stocks</ion-label>
+    <ion-icon name="close-circle"></ion-icon>
+  </ion-chip>
+</ion-header>
