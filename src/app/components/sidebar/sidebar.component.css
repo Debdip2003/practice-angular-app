@@ -1,0 +1,30 @@
+ion-list {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+ion-item{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+ion-icon {
+  color: #4b5563;
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+}
+ion-header {
+  border-bottom: 1px solid black;
+}
+ion-toolbar {
+  --background: #111827;
+  --color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+
+ion-label {
+  font-size: smaller;
+}

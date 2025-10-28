@@ -1,4 +1,16 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" side="start">
+      <ion-header class="ion-no-border">
+        <ion-toolbar>
+          <ion-title>Market</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-  <ion-app>
-    <ion-router-outlet></ion-router-outlet>
-  </ion-app>
+      <ion-content>
+        <app-sidebar></app-sidebar>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,11 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Injectable, OnInit } from '@angular/core';
-import {
-  IonLabel,
-  IonContent,
-  IonCard,
-  IonButton,
-} from '@ionic/angular/standalone';
+import { Component, OnInit } from '@angular/core';
+import { IonContent, IonCard } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -15,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./trending-page-main-table.component.css'],
   imports: [IonCard, IonContent, CommonModule, HttpClientModule],
 })
-
 export class TrendingPageMainTableComponent implements OnInit {
   // stockNames = [
   //   {
