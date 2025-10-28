@@ -15,12 +15,10 @@ import {
 })
 export class SignupFormComponent {
   signupForm!: FormGroup;
-  private readonly formBuilder: FormBuilder = inject(FormBuilder);
+  private fb = inject(FormBuilder)
+  private myServices= inject(AuthServices)
 
-  constructor(
-    private fb: FormBuilder = inject(FormBuilder),
-    private myServices: AuthServices
-  ) {
+  constructor() {
     this.signupForm = this.fb.group({
       email: ['', Validators.required],
       password: [
@@ -32,11 +30,8 @@ export class SignupFormComponent {
 
   signup() {
     if(this.signupForm.valid){
-
-    } else {
-      this.signupForm.
-    }
-    // console.log(this.myServices.sendFormData(this.signupForm.valid));
-    // this.myServices.sendFormData(this.signupForm.valid);
+    this.myServices.dataStore(this.signupForm.value)
+    } 
+   
   }
 }

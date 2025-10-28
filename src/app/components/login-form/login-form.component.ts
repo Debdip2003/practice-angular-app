@@ -19,9 +19,8 @@ export class LoginFormComponent {
 
   private fb = inject(FormBuilder);
   private myServices = inject(AuthServices);
-  private router = inject(Router);
 
-  constructor() {
+  constructor(private router:Router) {
     this.loginForm = this.fb.group({
       email: [
         '',
