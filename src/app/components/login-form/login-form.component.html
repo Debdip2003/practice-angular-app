@@ -1,8 +1,15 @@
 <div class="login-form" [formGroup]="loginForm">
+ 
   <label for="email">Email</label>
   <input type="email" formControlName="email" />
+   @if (loginForm.get("email") && loginForm.get("email")?.hasError("required") && loginForm.get("email")?.touched) {
+    <p>Please enter a valid email</p>
+  }
   <label for="password">Password</label>
   <input type="password" formControlName="password" />
+   @if (loginForm.get("password")  && loginForm.get("password")?.touched) {
+    <p>Please enter a valid password</p>
+  }
   <button (click)="login()">Login</button>
   <p routerLink="/signup" class="link">Click here to signup</p>
 </div>

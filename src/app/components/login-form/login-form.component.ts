@@ -6,21 +6,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthServices } from 'src/app/services/auth-services';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
 })
 export class LoginFormComponent {
   loginForm!: FormGroup;
 
   private fb = inject(FormBuilder);
   private myServices = inject(AuthServices);
+  private router= inject(Router)
+Validators: any;
 
-  constructor(private router:Router) {
+  constructor() {
     this.loginForm = this.fb.group({
       email: [
         '',
