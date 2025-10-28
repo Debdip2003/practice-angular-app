@@ -1,4 +1,4 @@
-<div class="login-form" [formGroup]="loginForm">
+<!-- <div class="login-form" [formGroup]="loginForm">
  
   <label for="email">Email</label>
   <input type="email" formControlName="email" />
@@ -12,4 +12,25 @@
   }
   <button (click)="login()">Login</button>
   <p routerLink="/signup" class="link">Click here to signup</p>
+</div> -->
+
+<div class="login">
+  <ion-content>
+  <ion-title>Stockedge Login</ion-title>
+  <form [formGroup]="loginForm">
+    <label for="firstname">First Name</label>
+    <input type="text" placeholder="Enter your first name" formControlName="firstname">
+     <label for="lastname">Last Name</label>
+    <input type="text" placeholder="Enter your lastname" formControlName="lastname">
+     <label for="phonenumber">Phone Number</label>
+    <input type="number" placeholder="Enter your phone number" formControlName="phonenumber">
+     <label for="email">Email</label>
+    <input type="email" placeholder="Enter your email" formControlName="email">
+     <label for="password">Password</label>
+    <input type="password" placeholder="Enter your password" formControlName="password">
+ <button (click)="onSubmit()">Submit</button>
+<p>{{message}}</p>
+  </form>
+  <p routerLink='/signup'>Click here to register yourself</p>
+</ion-content>
 </div>

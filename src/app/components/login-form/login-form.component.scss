@@ -1,20 +1,61 @@
-.login-form {
+// .login-form {
+//   display: flex;
+//   flex-direction: column;
+//   width: 300px;
+//   margin: 0 auto;
+// }
+// .login-form input {
+//   color: black;
+// }
+// .login-form button {
+//   margin-top: 10px;
+//   padding: 8px;
+// }
+// .link {
+//   cursor: pointer;
+//   margin-top: 10px;
+// }
+// .link:hover {
+//   color: rgb(43, 43, 165);
+// }
+
+// ion-toolbar{
+//   background-color:black;
+//   text-align:center
+// }
+
+
+.login{
+  background-color: skyblue;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+ion-content{
+  --background:white;
+  text-align:center;
+  height: 70vh;
+  --color: black;
+  --padding-top: 10px
+
+}
+form{
+  display:flex;
   flex-direction: column;
-  width: 300px;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  gap: 10px;
 }
-.login-form input {
-  color: black;
+
+form > button{
+  padding: 10px;
+background-color:pink;
 }
-.login-form button {
-  margin-top: 10px;
-  padding: 8px;
-}
-.link {
-  cursor: pointer;
-  margin-top: 10px;
-}
-.link:hover {
-  color: rgb(43, 43, 165);
+
+form > input{
+color: black;
 }
