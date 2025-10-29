@@ -29,9 +29,9 @@ export class SignupFormComponent {
   }
 
   signup() {
-    if(this.signupForm.valid){
-    this.myServices.dataStore(this.signupForm.value)
-    } 
+    // if(this.signupForm.valid){
+    // this.myServices.dataStore(this.signupForm.value)
+    // } 
    
   }
 }

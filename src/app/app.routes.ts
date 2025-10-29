@@ -1,4 +1,4 @@
-import { Routes, CanActivateFn } from '@angular/router';
+import { Routes } from '@angular/router';
 import { authGuard } from './auth-guard';
 
 export const routes: Routes = [
@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -32,4 +32,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/rxjs/rxjs.component').then((m) => m.RxjsComponent),
   },
+  {
+    path:'crud',
+    loadComponent:()=> import ('./components/crud-page/crud-page.component').then((m)=>m.CrudPageComponent)
+  }
 ];

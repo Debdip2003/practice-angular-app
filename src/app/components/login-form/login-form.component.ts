@@ -5,15 +5,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-// import { AuthServices } from 'src/app/services/auth-services';
 import { Router, RouterLink } from '@angular/router';
-import { IonContent, IonTitle } from "@ionic/angular/standalone";
+// import { AuthServices } from 'src/app/services/auth-services';
+import {IonInput, IonButton } from "@ionic/angular/standalone";
+import { AuthServices } from 'src/app/services/auth-services';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss'],
-  imports: [ IonTitle, IonContent, ReactiveFormsModule, RouterLink],
+  imports: [IonButton, IonInput,  ReactiveFormsModule, RouterLink ],
 })
 export class LoginFormComponent {
 //   loginForm!: FormGroup;
@@ -50,9 +51,10 @@ export class LoginFormComponent {
 //     }
 //   }
 
-message=''
 loginForm!: FormGroup;
 private fb= inject(FormBuilder)
+private router= inject(Router)
+private readonly myAuth= inject(AuthServices)
 
 constructor() {
     this.loginForm = this.fb.group({
@@ -65,7 +67,7 @@ constructor() {
           Validators.pattern('^[0-9]{10}$'),
         ],
       ],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       password: [
         '',
         [
@@ -80,11 +82,9 @@ constructor() {
   }
 
 onSubmit(){
-  console.log(this.loginForm.value);
-  if(this.loginForm.valid){
-    this.message='your form submission is successfull'
-  }
-  this.loginForm.reset()
-  
+ if(this.loginForm.valid){
+   this.myAuth.getData(this.loginForm.value)
+   this.router.navigateByUrl('/home')
+ }
 }
 }

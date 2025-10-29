@@ -11,13 +11,23 @@ export interface AuthData {
   providedIn:'root'
 })
 export class AuthServices {
-  dataStore(data: AuthData) {
-    console.log('Form Data Submitted', data);
-    return data;
+  // dataStore(data: AuthData) {
+  //   console.log('Form Data Submitted', data);
+  //   return data;
+  // }
+
+  // isValidForm(form: FormGroup) {
+  //   return form.valid;
+  // }
+
+  user!:any
+
+  getData(userData:any){
+    this.user= userData;
   }
 
-  isValidForm(form: FormGroup) {
-    return form.valid;
+  setData(){
+    return this.user
   }
 }
 

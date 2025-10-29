@@ -25,37 +25,51 @@
 // }
 
 
-.login{
-  background-color: skyblue;
-  height: 100vh;
+main{
+  background-image:linear-gradient(to bottom, #0a0d34, #1c3fa9);
+  color: black;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-ion-content{
-  --background:white;
-  text-align:center;
-  height: 70vh;
-  --color: black;
-  --padding-top: 10px
-
-}
-form{
-  display:flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-top: 10%;
-  gap: 10px;
+  justify-content: center;
+  height: 100vh;
 }
 
-form > button{
-  padding: 10px;
-background-color:pink;
+form{  background-color: rgb(255, 255, 255);
+  padding: 3rem;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 }
 
-form > input{
+p{
+    color: red;
+    width: 100%;
+}
+
+
+h1{
 color: black;
+margin-bottom: 3rem;
+}
+
+ion-input{
+  margin-top: 20px;
+  color: black;
+}
+
+.externalLinks{
+  display: flex;
+  width: 100%;
+}
+.links{
+  display: flex;
+  color: black;
+}
+.links:hover{
+  cursor: pointer;
+  color: rgb(42, 42, 245);
 }

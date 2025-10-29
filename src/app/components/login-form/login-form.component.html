@@ -14,23 +14,23 @@
   <p routerLink="/signup" class="link">Click here to signup</p>
 </div> -->
 
-<div class="login">
-  <ion-content>
-  <ion-title>Stockedge Login</ion-title>
+<main>
   <form [formGroup]="loginForm">
-    <label for="firstname">First Name</label>
-    <input type="text" placeholder="Enter your first name" formControlName="firstname">
-     <label for="lastname">Last Name</label>
-    <input type="text" placeholder="Enter your lastname" formControlName="lastname">
-     <label for="phonenumber">Phone Number</label>
-    <input type="number" placeholder="Enter your phone number" formControlName="phonenumber">
-     <label for="email">Email</label>
-    <input type="email" placeholder="Enter your email" formControlName="email">
-     <label for="password">Password</label>
-    <input type="password" placeholder="Enter your password" formControlName="password">
- <button (click)="onSubmit()">Submit</button>
-<p>{{message}}</p>
+    <h1>Login Form</h1>
+    <ion-input type="text" label="First Name" label-placement="floating" fill="outline" placeholder="Enter your First Name" formControlName="firstname" />
+    @if (this.loginForm.get("firstname")?.hasError("required") && this.loginForm.get("firstname")?.touched) {<p>First name is required</p>}
+   <ion-input  type="text" label="Last Name" label-placement="floating" fill="outline" placeholder="Enter your Last Name" formControlName="lastname"></ion-input>
+    @if (this.loginForm.get("lastname")?.hasError("required") && this.loginForm.get("lastname")?.touched) {<p>Last name is required</p>}
+   <ion-input type="number" label="Phone Number" label-placement="floating" fill="outline" placeholder="Enter your Phone Number" formControlName="phonenumber"></ion-input>
+    @if (this.loginForm.get("phonenumber")?.hasError("required") && this.loginForm.get("phonenumber")?.touched) {<p>Phone Number is required</p>} @else if (this.loginForm.get("phonenumber")?.hasError("pattern")) {<p>Phone Number is not valid</p>}
+    <ion-input type="email" label="Email" label-placement="floating" fill="outline" placeholder="Enter your Email" formControlName="email"></ion-input>
+    @if (this.loginForm.get("email")?.hasError("required") && this.loginForm.get("email")?.touched) {<p>Email is required</p>} @else if (this.loginForm.get("email")?.hasError("pattern")) {<p>Email is not valid</p>}
+   <ion-input type="password" label="Password" label-placement="floating" fill="outline" placeholder="Enter your Password" formControlName="password"></ion-input>
+    @if (this.loginForm.get("password")?.hasError("required") && this.loginForm.get("password")?.touched) {<p>Password is required</p>} @else if (this.loginForm.get("password")?.hasError("pattern")) {<p>Password is not valid</p>}
+   <div class="externalLinks">
+  <p routerLink="/signup" class="links">Click here to signup</p>
+  <p routerLink="/forgot" class="links">Forgot password?</p>
+  </div>
+    @if (this.loginForm.valid) {<ion-button (click)="onSubmit()">Submit</ion-button>}@else {<ion-button [disabled]="true">Submit</ion-button>}
   </form>
-  <p routerLink='/signup'>Click here to register yourself</p>
-</ion-content>
-</div>
+</main>
