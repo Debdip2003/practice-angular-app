@@ -8,7 +8,7 @@ import { OverlayEventDetail } from '@ionic/core/components';
   selector: 'app-crud-page',
   templateUrl: './crud-page.component.html',
   styleUrls: ['./crud-page.component.scss'],
-  imports: [FormsModule, IonInput, IonTitle, IonButtons, IonToolbar, IonHeader, IonModal, IonButton, IonIcon, IonItem, IonContent,HttpClientModule],
+  imports: [FormsModule, IonInput, IonButtons, IonToolbar, IonHeader, IonModal, IonButton, IonIcon, IonItem, IonContent,HttpClientModule],
 })
 export class CrudPageComponent implements OnInit{
 crudValues:any
