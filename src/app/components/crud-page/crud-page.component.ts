@@ -1,63 +1,71 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonItem, IonIcon,  IonButton, IonModal, IonHeader, IonToolbar, IonButtons, IonTitle, IonInput } from "@ionic/angular/standalone";
-import { OverlayEventDetail } from '@ionic/core/components';
+import {
+  IonContent,
+  IonButton,
+  IonIcon,
+  IonInput,
+  IonAlert,
+} from '@ionic/angular/standalone';
+import { CrudPageServices } from './crud-page-services';
 
 @Component({
   selector: 'app-crud-page',
   templateUrl: './crud-page.component.html',
   styleUrls: ['./crud-page.component.scss'],
-  imports: [FormsModule, IonInput, IonButtons, IonToolbar, IonHeader, IonModal, IonButton, IonIcon, IonItem, IonContent,HttpClientModule],
+  imports: [
+    IonAlert,
+    IonIcon,
+    FormsModule,
+    IonButton,
+    IonContent,
+    FormsModule,
+    IonInput,
+  ],
 })
-export class CrudPageComponent implements OnInit{
-crudValues:any
-editingNumbe: number | null = null
-editingName: string =''
-constructor(private http:HttpClient){}
+export class CrudPageComponent implements OnInit {
+  public alertButtons = [
+    {
+      text: 'No',
+      cssClass: 'alert-button-cancel',
+    },
+    {
+      text: 'Yes',
+      handler: (index: number) => {
+        this.myCrudPageService.onDelete(index);
+      },
+      cssClass: 'alert-button-confirm',
+    },
+  ];
 
-public fetchDetails(){
-     this.http
-      .get(
-        'https://staging.stockedge.com/Api/trendingstocksapi/GetPriceMovers?gainerLosersTypeEnum=1&page=1&pageSize=10&relevantListings=10&lang=ens'
-      )
-      .subscribe((apiResponse) => {
+  nameList: string[] = [];
+  input: string = '';
+  editIndex: number | null = null;
+  newName: string[] = [];
+  private readonly myCrudPageService = inject(CrudPageServices);
+  $index: any;
 
-      if(Array.isArray(apiResponse)){
-      this.crudValues = apiResponse.map((item:any)=>item.Name)
-        console.log(this.crudValues)
-      }
-      });
-
-}
-
-ngOnInit(): void {
-  this.fetchDetails()
-}
-
- @ViewChild(IonModal) modal!: IonModal;
-
- 
-  name!: string;
-
-  cancel() {
-    this.modal.dismiss(null, 'cancel');
+  ngOnInit(): void {
+    this.myCrudPageService.myNames$.subscribe((data) => (this.nameList = data));
   }
 
-  confirm() {
-    this.modal.dismiss(this.name, 'confirm');
-  }
-
-  onWillDismiss(event: CustomEvent<OverlayEventDetail>) {
-    if (event.detail.role === 'confirm') {
-      this.crudValues.push(this.name);
+  onAdd() {
+    if (this.input == '') return;
+    if (this.editIndex !== null) {
+      this.myCrudPageService.onEdit(this.editIndex, this.input);
+      this.editIndex = null;
+    } else {
+      this.myCrudPageService.onAdd(this.input);
     }
+    this.input = '';
   }
 
+  onEdit(index: number) {
+    this.editIndex = index;
+    this.input = this.myCrudPageService.myNameList[index];
+  }
 
-
-  deleteStocks(index:number){
-    this.crudValues.splice(index,1)
+  onDelete(index: number) {
+    this.myCrudPageService.onDelete(index);
   }
 }
-
