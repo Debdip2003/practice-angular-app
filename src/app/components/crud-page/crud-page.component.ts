@@ -8,42 +8,31 @@ import {
   IonAlert,
 } from '@ionic/angular/standalone';
 import { CrudPageServices } from './crud-page-services';
+import { AlertController, ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-crud-page',
   templateUrl: './crud-page.component.html',
   styleUrls: ['./crud-page.component.scss'],
-  imports: [
-    IonAlert,
-    IonIcon,
-    FormsModule,
-    IonButton,
-    IonContent,
-    FormsModule,
-    IonInput,
-  ],
+  imports: [IonIcon, FormsModule, IonButton, IonContent, FormsModule, IonInput],
+  providers: [AlertController, ModalController],
 })
 export class CrudPageComponent implements OnInit {
-  public alertButtons = [
-    {
-      text: 'No',
-      cssClass: 'alert-button-cancel',
-    },
-    {
-      text: 'Yes',
-      handler: (index: number) => {
-        this.myCrudPageService.onDelete(index);
-      },
-      cssClass: 'alert-button-confirm',
-    },
-  ];
-
   nameList: string[] = [];
   input: string = '';
   editIndex: number | null = null;
   newName: string[] = [];
   private readonly myCrudPageService = inject(CrudPageServices);
   $index: any;
+
+  private alertController = inject(AlertController);
+  private modalController = inject(ModalController);
+
+  // constructor(
+  //   private alertController: AlertController,
+  //   private modalController: ModalController
+  // ) {}
 
   ngOnInit(): void {
     this.myCrudPageService.myNames$.subscribe((data) => (this.nameList = data));
@@ -60,12 +49,40 @@ export class CrudPageComponent implements OnInit {
     this.input = '';
   }
 
-  onEdit(index: number) {
-    this.editIndex = index;
-    this.input = this.myCrudPageService.myNameList[index];
+  async onEdit(index: number) {
+    const editModal = await this.modalController.create({
+      component: ModalComponent,
+    });
+    await editModal.present();
+    const { role, data } = await editModal.onDidDismiss();
+    console.log(data);
+
+    if (role === 'confirm') {
+      // this.editIndex = index;
+      // this.input = this.myCrudPageService.myNameList[index];
+      const updateName = data.trim();
+      this.myCrudPageService.onEdit(index, updateName);
+    }
   }
 
-  onDelete(index: number) {
-    this.myCrudPageService.onDelete(index);
+  async onDelete(index: number) {
+    const delAlert = await this.alertController.create({
+      header: 'Confirm delete',
+      buttons: [
+        {
+          text: 'NO',
+          role: 'cancle',
+        },
+        {
+          text: 'Yes',
+          role: 'confirm',
+          handler: () => {
+            this.myCrudPageService.onDelete(index);
+          },
+        },
+      ],
+      backdropDismiss: false,
+    });
+    await delAlert.present();
   }
 }

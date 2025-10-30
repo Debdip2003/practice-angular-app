@@ -23,20 +23,10 @@
         <p>{{ individualName }}</p>
         <div>
           <ion-icon name="create-outline" (click)="onEdit($index)"></ion-icon>
-          <ion-icon
-            name="trash-outline"
-            trigger="present-alert"
-            (click)="onDelete($index)"
-          ></ion-icon>
+          <ion-icon name="trash-outline" (click)="onDelete($index)"></ion-icon>
         </div>
       </div>
       }
-      <ion-alert
-        trigger="present-alert"
-        class="custom-alert"
-        header="Are you sure?"
-        [buttons]="alertButtons"
-      ></ion-alert>
     </div>
   </ion-content>
 </main>
