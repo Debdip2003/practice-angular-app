@@ -1,0 +1,33 @@
+.button {
+  background-color: skyblue;
+  text-align: center;
+  padding: 10px;
+}
+.button:hover {
+  cursor: pointer;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the spinner */
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3; /* Light grey border */
+  border-top: 3px solid #3498db; /* Blue top border for spinner effect */
+  border-radius: 50%;
+  animation: spin 1s linear infinite; /* Apply the spin animation */
+  /* Hide initially, show with JavaScript */
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -46,4 +46,11 @@ export const routes: Routes = [
         (m) => m.PipesComponent
       ),
   },
+  {
+    path: 'directive',
+    loadComponent: () =>
+      import('./components/directive/directive.component').then(
+        (m) => m.DirectiveComponent
+      ),
+  },
 ];
