@@ -16,7 +16,6 @@ import {
   IonMenuToggle,
 } from '@ionic/angular/standalone';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { Spinner } from './components/spinner';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +31,6 @@ import { Spinner } from './components/spinner';
     IonToolbar,
     IonTitle,
     IonContent,
-    Spinner,
   ],
 })
 export class AppComponent {
