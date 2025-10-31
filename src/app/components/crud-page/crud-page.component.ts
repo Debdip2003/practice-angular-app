@@ -5,7 +5,6 @@ import {
   IonButton,
   IonIcon,
   IonInput,
-  IonAlert,
 } from '@ionic/angular/standalone';
 import { CrudPageServices } from './crud-page-services';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -23,48 +22,58 @@ export class CrudPageComponent implements OnInit {
   input: string = '';
   editIndex: number | null = null;
   newName: string[] = [];
-  private readonly myCrudPageService = inject(CrudPageServices);
   $index: any;
 
+  public readonly myCrudPageService = inject(CrudPageServices);
   private alertController = inject(AlertController);
   private modalController = inject(ModalController);
-
-  // constructor(
-  //   private alertController: AlertController,
-  //   private modalController: ModalController
-  // ) {}
 
   ngOnInit(): void {
     this.myCrudPageService.myNames$.subscribe((data) => (this.nameList = data));
   }
 
+  //add function
   onAdd() {
     if (this.input == '') return;
     if (this.editIndex !== null) {
       this.myCrudPageService.onEdit(this.editIndex, this.input);
       this.editIndex = null;
     } else {
-      this.myCrudPageService.onAdd(this.input);
+      if (this.myCrudPageService.myNameList.includes(this.input)) {
+        this.myCrudPageService.duplicateValue = true;
+      } else {
+        this.myCrudPageService.duplicateValue = false;
+        this.myCrudPageService.onAdd(this.input);
+      }
     }
     this.input = '';
   }
 
+  //edit functions
   async onEdit(index: number) {
+    const originalItem = this.myCrudPageService.myNameList[index];
     const editModal = await this.modalController.create({
       component: ModalComponent,
+      componentProps: {
+        itemToEdit: originalItem,
+      },
     });
     await editModal.present();
     const { role, data } = await editModal.onDidDismiss();
-    console.log(data);
 
     if (role === 'confirm') {
-      // this.editIndex = index;
-      // this.input = this.myCrudPageService.myNameList[index];
       const updateName = data.trim();
-      this.myCrudPageService.onEdit(index, updateName);
+      const isDuplicate = this.myCrudPageService.myNameList.includes(data);
+      if (isDuplicate) {
+        this.myCrudPageService.duplicateValue = true;
+      } else {
+        this.myCrudPageService.onEdit(index, updateName);
+        this.myCrudPageService.duplicateValue = false;
+      }
     }
   }
 
+  //delete function
   async onDelete(index: number) {
     const delAlert = await this.alertController.create({
       header: 'Confirm delete',

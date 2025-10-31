@@ -1,9 +1,8 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import {
   IonHeader,
   IonToolbar,
   IonButtons,
-  IonTitle,
   IonButton,
   IonItem,
   IonContent,
@@ -22,22 +21,24 @@ import { FormsModule } from '@angular/forms';
     IonContent,
     IonItem,
     IonButton,
-    IonTitle,
     IonButtons,
     IonHeader,
     FormsModule,
   ],
   providers: [ModalController],
 })
-export class ModalComponent {
-  name!: string;
+export class ModalComponent implements OnInit {
+  @Input() itemToEdit: any;
   private modalController = inject(ModalController);
 
+  ngOnInit(): void {
+    console.log(this.itemToEdit);
+  }
   cancel() {
     return this.modalController.dismiss(null, 'cancel');
   }
 
   confirm() {
-    return this.modalController.dismiss(this.name, 'confirm');
+    return this.modalController.dismiss(this.itemToEdit, 'confirm');
   }
 }

@@ -8,6 +8,11 @@
         placeholder="Enter your name"
         [(ngModel)]="input"
       ></ion-input>
+      @if (this.myCrudPageService.duplicateValue) {
+      <p class="duplicateValueIndicator">
+        This name already exist, cannot add it.
+      </p>
+      }
       <ion-button
         id="open-modal"
         expand="block"

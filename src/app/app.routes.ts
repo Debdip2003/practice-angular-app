@@ -33,7 +33,17 @@ export const routes: Routes = [
       import('./components/rxjs/rxjs.component').then((m) => m.RxjsComponent),
   },
   {
-    path:'crud',
-    loadComponent:()=> import ('./components/crud-page/crud-page.component').then((m)=>m.CrudPageComponent)
-  }
+    path: 'crud',
+    loadComponent: () =>
+      import('./components/crud-page/crud-page.component').then(
+        (m) => m.CrudPageComponent
+      ),
+  },
+  {
+    path: 'pipes',
+    loadComponent: () =>
+      import('./components/pipes/pipes.component').then(
+        (m) => m.PipesComponent
+      ),
+  },
 ];

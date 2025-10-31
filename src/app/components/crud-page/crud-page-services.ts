@@ -7,24 +7,23 @@ import { BehaviorSubject } from 'rxjs';
 export class CrudPageServices {
   public myNameList: string[] = ['Debdip', 'Poorva'];
   myNames$ = new BehaviorSubject<string[]>(this.myNameList);
-  // private httpClient = inject(HttpClient)
-
-  //on adding data function
+  duplicateValue: boolean = false;
+  //add function
   onAdd(input: string) {
     const updatedList = [...this.myNameList, input];
     this.myNameList = updatedList;
     this.myNames$.next(updatedList);
   }
 
-  //edit the local variable that is nameList
+  //edit function
   onEdit(index: number, newName: string) {
     const updatedList = [...this.myNameList];
     updatedList[index] = newName;
     this.myNameList = updatedList;
-    console.log(updatedList, newName);
     this.myNames$.next(updatedList);
   }
 
+  //delete function
   onDelete(index: number) {
     const updatedList = this.myNameList.filter((_, i) => i !== index);
     this.myNameList = updatedList;
