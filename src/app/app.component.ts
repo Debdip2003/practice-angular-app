@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   IonApp,
@@ -9,11 +8,6 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonIcon,
-  IonMenuToggle,
 } from '@ionic/angular/standalone';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
