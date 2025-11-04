@@ -1,0 +1,25 @@
+.select-container {
+  position: relative;
+  width: 200px;
+  user-select: none;
+}
+
+.selected {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  top: calc(100% + 4px);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}

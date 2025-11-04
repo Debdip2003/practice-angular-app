@@ -1,0 +1,11 @@
+<div class="select-container">
+  <div class="selected" (click)="toggleDropdown()">
+    {{ selectedValue }}
+  </div>
+
+  @if(isOpen){
+  <div class="options">
+    <ng-content></ng-content>
+  </div>
+  }
+</div>

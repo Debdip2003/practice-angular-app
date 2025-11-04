@@ -53,4 +53,8 @@ export const routes: Routes = [
         (m) => m.DirectiveComponent
       ),
   },
+  {
+    path: 'view-child',
+    loadComponent: () => import('./pages/view-child/view-child.page').then( m => m.ViewChildPage)
+  },
 ];
