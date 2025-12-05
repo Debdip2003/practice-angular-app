@@ -1,0 +1,11 @@
+<ion-grid class="circle-grid">
+  @for (msg of message; track $index; let index = $index) {
+  <ion-row>
+    <ion-col>
+      <div class="circle-box" [class.active]="index===currectActiveNumber">
+        {{msg.name}} {{msg.timestamp}}
+      </div>
+    </ion-col>
+  </ion-row>
+  }
+</ion-grid>

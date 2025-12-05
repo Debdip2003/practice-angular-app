@@ -2,12 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonContent, IonCard } from '@ionic/angular/standalone';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-trending-page-main-table',
   templateUrl: './trending-page-main-table.component.html',
   styleUrls: ['./trending-page-main-table.component.css'],
-  imports: [IonCard, IonContent, CommonModule ],
+  imports: [IonCard, IonContent, CommonModule, RouterLink, RouterLinkActive],
 })
 export class TrendingPageMainTableComponent implements OnInit {
   // stockNames = [

@@ -1,16 +1,18 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './auth-guard';
+import { DetailsPage } from './pages/details/details.page';
 
 export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
       import('./components/home/home.page').then((m) => m.HomePage),
+    children: [{ path: 'details/:securityID', component: DetailsPage }],
     canActivate: [authGuard],
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -55,6 +57,14 @@ export const routes: Routes = [
   },
   {
     path: 'view-child',
-    loadComponent: () => import('./pages/view-child/view-child.page').then( m => m.ViewChildPage)
+    loadComponent: () =>
+      import('./pages/view-child/view-child.page').then((m) => m.ViewChildPage),
+  },
+  {
+    path: 'ionic-lifecycle',
+    loadComponent: () =>
+      import('./pages/ionic-lifecycle/ionic-lifecycle.page').then(
+        (m) => m.IonicLifeCyclePage
+      ),
   },
 ];

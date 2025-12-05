@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-
 export interface AuthData {
   email: string;
   password: string;
 }
 
 @Injectable({
-  providedIn:'root'
+  providedIn: 'root',
 })
 export class AuthServices {
   // dataStore(data: AuthData) {
@@ -20,14 +19,13 @@ export class AuthServices {
   //   return form.valid;
   // }
 
-  user!:any
+  user!: any;
 
-  getData(userData:any){
-    this.user= userData;
+  getData(userData: any) {
+    this.user = userData;
   }
 
-  setData(){
-    return this.user
+  setData() {
+    return this.user;
   }
 }
-

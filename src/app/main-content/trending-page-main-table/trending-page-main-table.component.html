@@ -12,8 +12,12 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="let stocks of stockNames">
-            <td >
+          <tr
+            *ngFor="let stocks of stockNames"
+            routerLinkActive="router-link-active"
+            [routerLink]="['details', stocks.SecurityID]"
+          >
+            <td>
               <div class="stock-info-container">
                 <img
                   [src]="stocks.SecurityLogoUrl"

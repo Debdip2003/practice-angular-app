@@ -1,0 +1,37 @@
+.circle-grid {
+  ion-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+
+    ion-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  ion-col {
+    width: 100%;
+  }
+
+  ion-col {
+    .circle-box {
+      padding: 20px;
+      border-radius: 10px;
+      background: var(--ion-color-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .circle-box.active {
+      background: #4caf50; /* Highlight color */
+      color: white;
+    }
+  }
+}
